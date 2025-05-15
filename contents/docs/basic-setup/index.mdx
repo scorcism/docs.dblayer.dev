@@ -1,0 +1,103 @@
+---
+title: Introduction
+description: This guide will walk you through the basics of setting up your first connection, organizing your endpoints in workspaces, and creating your first API.
+keywords: ["introduction", "guide", "dblayer"]
+---
+
+# Getting Started with DBLayer
+
+Welcome to **DBLayer** – your toolkit for turning SQL queries into instant, secure REST APIs. In this guide, you’ll learn how to set up a database connection, organize your endpoints using workspaces, and publish your first custom API.
+
+---
+
+## 1. Create a Connection
+
+The first step is to add a **Connection**. This is how DBLayer connects to your database.
+
+> Currently, we support only **PostgreSQL** databases.
+
+Your connection string should look like this:
+
+```bash
+postgres://username:password@host:port/database
+```
+
+If you don’t have a PostgreSQL database yet, you can use one of these free hosting providers:
+
+<CardGrid>
+  <Card
+    subtitle="Free PostgreSQL Hosting"
+    title="Supabase"
+    description="Create and manage PostgreSQL databases with a user-friendly interface and instant APIs."
+    href="https://supabase.com/"
+    external={true}
+  />
+  <Card
+    subtitle="Serverless PostgreSQL"
+    title="Neon"
+    description="Provision a free, scalable PostgreSQL database with a serverless experience."
+    href="https://neon.tech/"
+    external={true}
+  />
+  <Card
+    subtitle="Managed Databases"
+    title="Render"
+    description="Deploy fully managed PostgreSQL databases with a generous free tier."
+    href="https://render.com/docs/databases"
+    external={true}
+  />
+</CardGrid>
+
+---
+
+## 2. Set Up a Workspace
+
+A **Workspace** is like a project folder that helps you organize your API endpoints. Each workspace is linked to a single database connection.
+
+### Key Features:
+
+- Each workspace has a unique **slug**.
+- All endpoints inside a workspace share the same database connection.
+
+### Required Fields to Create a Workspace:
+
+| Field           | Description                                                          |
+|-----------------|----------------------------------------------------------------------|
+| **Name**        | A descriptive name for your workspace.                              |
+| **Connection**  | The database connection the workspace will use.                     |
+| **Origins**     | Allowed frontend origins for CORS. Use this to secure your API.     |
+
+---
+
+## 3. Create Endpoints
+
+Once your workspace is ready, you can start adding **Endpoints**.
+
+Endpoints allow you to expose specific SQL queries as RESTful APIs. Each endpoint has its own path and can be configured to accept parameters and HTTP methods.
+
+### Key Features:
+
+- Each endpoint has a unique **slug** and its own API path.
+- You can choose which HTTP methods to allow (`GET`, `POST`).
+
+### Required Fields to Create an Endpoint:
+
+| Field              | Description                                                          |
+|--------------------|----------------------------------------------------------------------|
+| **Name**           | A readable name for your endpoint.                                  |
+| **Allowed Methods**| Select which HTTP methods are supported (`GET` or `POST`).           |
+
+Once created, your endpoint is instantly accessible and can be customized or tested as needed.
+
+---
+
+## What’s Next?
+
+- Secure your endpoints with [Authentication](/docs/auth).
+- Add [Rate Limiting](/docs/rate-limiting) to prevent abuse.
+- Enable [Logging](/docs/logs) for monitoring and debugging.
+- Start building your own workspace and endpoints in just a few minutes!
+
+---
+
+> Need help? Join our [Discord Community](#) or explore the [Full Documentation](/docs).
