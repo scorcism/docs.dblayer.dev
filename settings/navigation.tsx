@@ -13,5 +13,5 @@ export const Navigations = [
 ]
 
 export const GitHubLink = {
-  href: "https://github.com/dblayer-dev/docs.dblayer.dev",
+  href: "https://github.com/scorcism/docs.dblayer.dev",
 }

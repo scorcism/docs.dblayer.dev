@@ -1,7 +1,9 @@
+import { config } from "@/lib/config"
+
 export const url = "https://docs.dblayer.dev"
 export const siteicon = "/icon.png"
 
-export const gtm = "GTM-XXXXXXX"
+export const gtm = config.env.GTM
 export const gtmconnected = true
 
 export const sitename = "DBlayer"
