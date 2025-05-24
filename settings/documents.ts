@@ -76,6 +76,11 @@ export const Documents: Paths[] = [
     ],
   },
   {
+    title: "API",
+    href: "/api",
+    items: [],
+  },
+  {
     spacer: true,
   },
   {
@@ -93,7 +98,7 @@ export const Documents: Paths[] = [
       {
         title: "Authentication",
         href: "/authentication",
-      }
+      },
     ],
   },
   {
@@ -105,9 +110,13 @@ export const Documents: Paths[] = [
         href: "/troubleshoot",
       },
       {
+        title: "Billing",
+        href: "/billing",
+      },
+      {
         title: "Contact Support",
         href: "/support",
-      }
+      },
     ],
   },
 ]
