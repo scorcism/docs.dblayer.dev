@@ -5,7 +5,6 @@ import {
   description,
   feedbackedit,
   gtm,
-  gtmconnected,
   imagealt,
   keywords,
   loadfromgithub,
@@ -29,12 +28,12 @@ export const Company = {
 
 export const Settings = {
   gtm: gtm,
-  gtmconnected: gtmconnected,
   rightbar: rightsidebar,
   toc: tableofcontent,
   feedback: feedbackedit,
   totop: totopscroll,
   gitload: loadfromgithub,
+  companylink: companylink,
 
   title: sitename,
   metadataBase: url,

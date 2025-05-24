@@ -1,11 +1,11 @@
+import { GoogleTagManager } from "@next/third-parties/google"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { GoogleTagManager } from "@next/third-parties/google"
 
-import { Settings } from "@/lib/meta"
 import { Footer } from "@/components/navigation/footer"
 import { Navbar } from "@/components/navigation/navbar"
 import { Providers } from "@/components/providers"
+import { Settings } from "@/lib/meta"
 
 import "@/styles/globals.css"
 
@@ -54,7 +54,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {Settings.gtmconnected && <GoogleTagManager gtmId={Settings.gtm} />}
       <body className={`${inter.variable} font-regular`}>
         <Providers>
           <Navbar />
@@ -62,6 +61,7 @@ export default function RootLayout({
           <Footer />
         </Providers>
       </body>
+      <GoogleTagManager gtmId={Settings.gtm} />
     </html>
   )
 }
