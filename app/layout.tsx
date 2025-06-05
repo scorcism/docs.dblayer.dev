@@ -1,4 +1,4 @@
-import { GoogleTagManager } from "@next/third-parties/google"
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
@@ -62,6 +62,7 @@ export default function RootLayout({
         </Providers>
       </body>
       <GoogleTagManager gtmId={Settings.gtm} />
+      <GoogleAnalytics gaId={Settings.ga} />
     </html>
   )
 }

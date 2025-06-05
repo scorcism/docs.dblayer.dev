@@ -16,6 +16,7 @@ import {
   twitterhandle,
   url,
   urlimage,
+  ga
 } from "@/settings/settings"
 
 import { OpenGraph, TwitterCard } from "@/lib/metadata"
@@ -28,6 +29,7 @@ export const Company = {
 
 export const Settings = {
   gtm: gtm,
+  ga: ga,
   rightbar: rightsidebar,
   toc: tableofcontent,
   feedback: feedbackedit,
