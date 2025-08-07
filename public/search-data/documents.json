@@ -1,3 +1,388 @@
 [
-
+  {
+    "slug": "/account/account-details",
+    "title": "Account Details",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/account/help",
+    "title": "Help",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/account",
+    "title": "Account",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/account/logs",
+    "title": "Application Logs",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/account/team-management",
+    "title": "Team Management",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/api",
+    "title": "API",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/basic-setup/connection",
+    "title": "Connection",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/basic-setup/endpoint",
+    "title": "Endpoint",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/basic-setup",
+    "title": "Introduction",
+    "description": "This guide will walk you through the basics of setting up your first connection, organizing your endpoints in workspaces, and creating your first API.",
+    "content": "# Getting Started with DBLayer\n\nWelcome to **DBLayer** – your toolkit for turning SQL queries into instant, secure REST APIs. In this guide, you’ll learn how to set up a database connection, organize your endpoints using workspaces, and publish your first custom API.\n\n***\n\n## 1. Create a Connection\n\nThe first step is to add a **Connection**. This is how DBLayer connects to your database.\n\n> Currently, we support only **PostgreSQL** databases.\n\nYour connection string should look like this:\n\n```bash\npostgres://username:password@host:port/database\n```\n\nIf you don’t have a PostgreSQL database yet, you can use one of these free hosting providers:\n\n***\n\n## 2. Set Up a Workspace\n\nA **Workspace** is like a project folder that helps you organize your API endpoints. Each workspace is linked to a single database connection.\n\n### Key Features:\n\n* Each workspace has a unique **slug**.\n* All endpoints inside a workspace share the same database connection.\n\n### Required Fields to Create a Workspace:\n\n| Field           | Description                                                          |\r\n|-----------------|----------------------------------------------------------------------|\r\n| **Name**        | A descriptive name for your workspace.                              |\r\n| **Connection**  | The database connection the workspace will use.                     |\r\n| **Origins**     | Allowed frontend origins for CORS. Use this to secure your API.     |\n\n***\n\n## 3. Create Endpoints\n\nOnce your workspace is ready, you can start adding **Endpoints**.\n\nEndpoints allow you to expose specific SQL queries as RESTful APIs. Each endpoint has its own path and can be configured to accept parameters and HTTP methods.\n\n### Key Features:\n\n* Each endpoint has a unique **slug** and its own API path.\n* You can choose which HTTP methods to allow (`GET`, `POST`).\n\n### Required Fields to Create an Endpoint:\n\n| Field              | Description                                                          |\r\n|--------------------|----------------------------------------------------------------------|\r\n| **Name**           | A readable name for your endpoint.                                  |\r\n| **Allowed Methods**| Select which HTTP methods are supported (`GET` or `POST`).           |\n\nOnce created, your endpoint is instantly accessible and can be customized or tested as needed.\n\n***\n\n## What’s Next?\n\n* Secure your endpoints with [Authentication](/docs/auth).\n* Add [Rate Limiting](/docs/rate-limiting) to prevent abuse.\n* Enable [Logging](/docs/logs) for monitoring and debugging.\n* Start building your own workspace and endpoints in just a few minutes!\n\n***\n\n> Need help? Join our [Discord Community](#) or explore the [Full Documentation](/docs).\n",
+    "_searchMeta": {
+      "cleanContent": "getting started with dblayer welcome to dblayer your toolkit for turning sql queries into instant secure rest apis in this guide you ll learn how to set up a database connection organize your endpoints using workspaces and publish your first custom api create a connection the first step is to add a connection this is how dblayer connects to your database currently we support only postgresql databases your connection string should look like this: if you don t have a postgresql database yet you can use one of these free hosting providers: set up a workspace a workspace is like a project folder that helps you organize your api endpoints each workspace is linked to a single database connection key features: each workspace has a unique slug all endpoints inside a workspace share the same database connection required fields to create a workspace: field description ----------------- ---------------------------------------------------------------------- name a descriptive name for your workspace connection the database connection the workspace will use origins allowed frontend origins for cors use this to secure your api create endpoints once your workspace is ready you can start adding endpoints endpoints allow you to expose specific sql queries as restful apis each endpoint has its own path and can be configured to accept parameters and http methods key features: each endpoint has a unique slug and its own api path you can choose which http methods to allow get post required fields to create an endpoint: field description -------------------- ---------------------------------------------------------------------- name a readable name for your endpoint allowed methods select which http methods are supported get or post once created your endpoint is instantly accessible and can be customized or tested as needed what s next secure your endpoints with authentication add rate limiting to prevent abuse enable logging for monitoring and debugging start building your own workspace and endpoints in just a few minutes need help join our discord community or explore the full documentation",
+      "headings": [
+        "1. Create a Connection",
+        "2. Set Up a Workspace",
+        "3. Create Endpoints",
+        "What’s Next?"
+      ],
+      "keywords": [
+        "introduction",
+        "guide",
+        "dblayer",
+        "1. Create a Connection",
+        "2. Set Up a Workspace",
+        "3. Create Endpoints",
+        "What’s Next?",
+        "DBLayer",
+        "## 1. Create a Connection\n\nThe first step is to add a",
+        ". This is how DBLayer connects to your database.\n\n> Currently, we support only",
+        "databases.\n\nYour connection string should look like this:\n\n```bash\npostgres://username:password@host:port/database\n```\n\nIf you don’t have a PostgreSQL database yet, you can use one of these free hosting providers:",
+        "Workspace",
+        "slug",
+        "Name",
+        "Connection",
+        "Origins",
+        "## 3. Create Endpoints\n\nOnce your workspace is ready, you can start adding",
+        "Allowed Methods",
+        "bash\npostgres://username:password@host:port/database",
+        "If you don’t have a PostgreSQL database yet, you can use one of these free hosting providers:\n\n***\n\n## 2. Set Up a Workspace\n\nA **Workspace** is like a project folder that helps you organize your API endpoints. Each workspace is linked to a single database connection.\n\n### Key Features:\n\n* Each workspace has a unique **slug**.\n* All endpoints inside a workspace share the same database connection.\n\n### Required Fields to Create a Workspace:\n\n| Field           | Description                                                          |\r\n|-----------------|----------------------------------------------------------------------|\r\n| **Name**        | A descriptive name for your workspace.                              |\r\n| **Connection**  | The database connection the workspace will use.                     |\r\n| **Origins**     | Allowed frontend origins for CORS. Use this to secure your API.     |\n\n***\n\n## 3. Create Endpoints\n\nOnce your workspace is ready, you can start adding **Endpoints**.\n\nEndpoints allow you to expose specific SQL queries as RESTful APIs. Each endpoint has its own path and can be configured to accept parameters and HTTP methods.\n\n### Key Features:\n\n* Each endpoint has a unique **slug** and its own API path.\n* You can choose which HTTP methods to allow (",
+        ",",
+        ").\n\n### Required Fields to Create an Endpoint:\n\n| Field              | Description                                                          |\r\n|--------------------|----------------------------------------------------------------------|\r\n| **Name**           | A readable name for your endpoint.                                  |\r\n| **Allowed Methods**| Select which HTTP methods are supported (",
+        "or"
+      ]
+    }
+  },
+  {
+    "slug": "/basic-setup/workspace",
+    "title": "Workspace",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/endpoint",
+    "title": "Endpoint",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/endpoint/tabs/documentation",
+    "title": "Documentation",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/endpoint/tabs",
+    "title": "Tabs",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/endpoint/tabs/link",
+    "title": "Link",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/endpoint/tabs/recipe",
+    "title": "Recipe",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/endpoint/tabs/usage",
+    "title": "Usage",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/guides/authentication",
+    "title": "Authentication",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/guides",
+    "title": "Guides",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/guides/logging",
+    "title": "Logging",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/guides/rate-limit",
+    "title": "Rate Limiting",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/help/billing",
+    "title": "Billing",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/help",
+    "title": "Help",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/help/support",
+    "title": "Support",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Support",
+        "Coming soon..."
+      ]
+    }
+  },
+  {
+    "slug": "/help/troubleshoot",
+    "title": "Troubleshoot",
+    "description": "",
+    "content": "## Coming soon...\n",
+    "_searchMeta": {
+      "cleanContent": "coming soon",
+      "headings": [
+        "Coming soon..."
+      ],
+      "keywords": [
+        "Coming soon..."
+      ]
+    }
+  }
 ]

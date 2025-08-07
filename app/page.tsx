@@ -8,7 +8,7 @@ export default function Home() {
       <p className="mb-2 text-sm text-muted-foreground">
         <strong>Note:</strong>{" "}
         <span>
-          Documentation is a work in progress. I'm currently building it solo, so
+          Documentation is a work in progress. Currently building it solo, so
           thank you for your patience!
         </span>
       </p>
