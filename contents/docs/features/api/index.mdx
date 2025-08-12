@@ -1,0 +1,116 @@
+---
+title: API
+description: This guide walks you through creating your first API with dblayer — from connecting your database to organizing endpoints in workspaces and publishing them.
+keywords: ["dblayer", "API setup", "PostgreSQL connection", "create endpoints", "workspace", "REST API", "API guide", "database API", "SQL API", "backend automation"]
+---
+
+## 📺 Video Guide
+
+Prefer learning visually? Watch our step-by-step video tutorial on setting up your first dblayer API:
+
+<iframe width="100%" height="550" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+title="dblayer API Setup Guide" frameborder="0" allowfullscreen></iframe>
+
+---
+
+## 1. Create a Connection
+
+The first step is to **add a database connection** — this is how dblayer links to your database.
+
+> Currently, dblayer supports only **PostgreSQL** databases.
+
+A typical PostgreSQL connection string looks like this:
+
+```bash
+postgres://username:password@host:port/database
+````
+
+If you don’t already have a PostgreSQL database, here are some **free hosting providers** you can use:
+
+> *Note: These are not affiliate links — but if you know someone who knows someone who might sponsor us… we’re listening. 😊*
+
+<CardGrid>
+  <Card
+    subtitle="Free PostgreSQL Hosting"
+    title="Supabase"
+    description="Create and manage PostgreSQL databases with a user-friendly interface and instant APIs."
+    href="https://supabase.com/"
+    external={true}
+  />
+  <Card
+    subtitle="Serverless PostgreSQL"
+    title="Neon"
+    description="Provision a free, scalable PostgreSQL database with a serverless experience."
+    href="https://neon.tech/"
+    external={true}
+  />
+  <Card
+    subtitle="Managed Databases"
+    title="Render"
+    description="Deploy fully managed PostgreSQL databases with a generous free tier."
+    href="https://render.com/docs/databases"
+    external={true}
+  />
+</CardGrid>
+
+---
+
+## 2. Set Up a Workspace
+
+A **Workspace** acts like a project folder for your API endpoints.
+Each workspace is linked to **a single database connection**.
+
+**Workspace Highlights:**
+
+* Unique **slug** for easy identification.
+* All endpoints inside share the same database connection.
+* Keeps your projects organized and manageable.
+
+---
+
+## 3. Create an Endpoint
+
+Once your workspace is ready, you can create endpoints to expose SQL queries as REST APIs.
+
+**Endpoint Capabilities:**
+
+* Each endpoint has a **unique slug** and **custom API path**.
+* Supports HTTP methods like `GET` and `POST`.
+* Accepts query parameters for dynamic queries.
+
+**Required Fields:**
+
+| Field          | Description                                                  |
+| -------------- | ------------------------------------------------------------ |
+| **Name**       | A readable, descriptive name for your endpoint.              |
+| **API Method** | Choose supported HTTP methods (`GET` or `POST`).             |
+| **SQL Query**  | The SQL statement that will run when the endpoint is called. |
+
+Once created, your endpoint is **instantly live** and can be tested immediately.
+
+---
+
+## 4. Edit & Publish an Endpoint
+
+After creating an endpoint, you’ll be redirected to the **Editor**.
+The editor includes multiple subpages where you can:
+
+* Modify your SQL query.
+* Adjust parameters.
+* Test responses before publishing.
+
+When you’re ready, click the **Publish** button in the top-right corner to make your API live.
+
+---
+
+## 5. Next Steps
+
+With your first API running, you can:
+
+* Build **dashboards** or **internal tools** using your API.
+
+---
+
+### **Need help?**
+
+Join our [Discord Community](https://discord.gg/Chx5FGSQHp).
