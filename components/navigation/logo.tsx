@@ -14,7 +14,7 @@ export function Logo() {
         loading="lazy"
         decoding="async"
       />
-      <span className="text-md font-semibold">{Settings.title}</span>
+      {/* <span className="text-md font-semibold">{Settings.title}</span> */}
     </Link>
   )
 }
