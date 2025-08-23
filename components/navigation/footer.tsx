@@ -16,12 +16,12 @@ export function Footer() {
         <div className="text-center md:block">
           <Link
             className=""
-            href="https://www.rubixstudios.com.au"
+            href="https://dblayer.dev/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Template by <span className="font-semibold">
-              rubixstudios.com.au
+            Powered by <span className="font-semibold">
+              Coffee and dblayer
             </span>
           </Link>
         </div>

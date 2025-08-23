@@ -1,7 +1,92 @@
 ---
 title: Troubleshoot
-description: 
-keywords: []
+description: "Find solutions to common problems, connection issues, and errors when using dblayer. Learn how to debug your database connections, API endpoints, and applications."
+keywords:
+  - troubleshoot
+  - dblayer issues
+  - database connection error
+  - api endpoint not working
+  - debugging guide
+  - common errors
 ---
 
-## Coming soon...
+# Troubleshooting Guide
+
+If you run into issues while using dblayer, here are some common problems and solutions:
+
+### 1. Database Connection Issues
+
+**Problem:** Cannot connect to PostgreSQL database.
+**Possible Causes & Fixes:**
+
+- **Invalid connection string** — Make sure your string follows this format:
+  `postgres://username:password@host:port/database`
+
+- **Firewall/Network restrictions** — Ensure your database is publicly accessible or whitelist dblayer’s IP if required.
+
+- **Wrong credentials** — Double-check username, password, host, and database name.
+
+- **SSL required** — Some hosting providers (e.g., Render, Supabase) need `?sslmode=require` in the connection string.
+
+### 2. Endpoint Not Working
+
+**Problem:** Calling an API endpoint returns an error.
+**Possible Causes & Fixes:**
+
+- **SQL error** — Check if your SQL query runs correctly in your database client before using it in dblayer.
+
+- **Wrong method** — Ensure you’re calling the endpoint with the correct HTTP method (GET vs POST).
+
+- **Missing parameters** — If your query uses parameters, pass them properly in the request.
+
+- **Unauthorized access** — Confirm if authentication/authorization is enabled for that endpoint.
+
+### 3. Queries Returning No Data
+
+**Problem:** API works, but response is empty.
+**Possible Causes & Fixes:**
+
+- **Empty table** — Verify your database actually has data.
+
+- **Filtering issue** — Check if your `WHERE` clause or query parameters are too restrictive.
+
+- **Schema mismatch** — Ensure you’re querying the correct schema (e.g., `public.users` vs `users`).
+
+### 4. App Editor Issues
+
+**Problem:** App is not updating or components aren’t showing data.
+**Possible Causes & Fixes:**
+
+- **Query not bound** — Make sure your component is linked to a valid SQL query or API endpoint.
+
+- **Wrong data mapping** — Double-check that your table/label/input points to the correct field in the query response.
+
+- **Unpublished changes** — Remember to click **Publish** after editing.
+
+### 5. Publishing Problems
+
+**Problem:** Endpoint/App not accessible after publishing.
+**Possible Causes & Fixes:**
+
+- **Private by default** — Apps are private unless you explicitly set them to public.
+
+- **Wrong URL** — Verify your custom subdomain (e.g., `apple.dblayer.dev`).
+
+- **Propagation delay** — Wait a few seconds and refresh after publishing.
+
+### 6. Performance & Caching
+
+**Problem:** API feels slow.
+**Fixes:**
+
+- Enable query caching for frequent queries.
+- Optimize your SQL queries (indexes, limit results).
+- Use pagination for large datasets.
+
+### 7. General Debugging Tips
+
+- Test your SQL queries directly in a PostgreSQL client (psql, Supabase, etc.) before using them in dblayer.
+- Check console/network logs in your browser when testing endpoints.
+- If all else fails, restart your workspace connection from the dashboard.
+
+**Still stuck?** Join our [Discord Community](https://discord.gg/UUEkmUGnyy) for real-time support.
