@@ -478,62 +478,106 @@
   },
   {
     "slug": "/help/billing",
-    "title": "Billing",
-    "description": "",
-    "content": "## Coming soon...\n",
+    "title": "Billing & Pricing",
+    "description": "Explore dblayer's simple and transparent pricing plans. Choose from Starter, Professional, or Enterprise tiers to fit your needs, with options for monthly or yearly billing.",
+    "content": "# Simple, Transparent Pricing\n\nSelect a plan that works for you.\\\n👉 [View all plans & pricing here](https://dblayer.dev/#pricing)\n\n***\n\n## Complete Your Payment\n\nChoose your preferred payment method below.\n\n### International Payment\n\nSecure payment via Wise for global users.\n\n**Important:** After payment, email us at [abhishek@dblayer.dev](mailto:abhishek@dblayer.dev) with your registered email to activate access within 12 hours.\n\n### Indian Payment (UPI)\n\nQuick payment via UPI for Indian users.\n\n**UPI ID:** `scor32k@ybl`\n\n**Next Steps:** Send your UPI transaction ID and registered email to [abhishek@dblayer.dev](mailto:abhishek@dblayer.dev).\n\n### Processing Time\n\nPlease allow up to 12 hours for account activation. We process payments manually to ensure security, and any delays will be compensated.\n",
     "_searchMeta": {
-      "cleanContent": "coming soon",
+      "cleanContent": "simple transparent pricing select a plan that works for you view all plans pricing here complete your payment choose your preferred payment method below international payment secure payment via wise for global users important: after payment email us at abhishek dblayer dev with your registered email to activate access within 12 hours indian payment upi quick payment via upi for indian users upi id: scor32k ybl next steps: send your upi transaction id and registered email to abhishek dblayer dev processing time please allow up to 12 hours for account activation we process payments manually to ensure security and any delays will be compensated",
       "headings": [
-        "Coming soon..."
+        "Complete Your Payment"
       ],
       "keywords": [
-        "Coming soon..."
+        "pricing",
+        "billing",
+        "dblayer plans",
+        "subscription",
+        "payment",
+        "Complete Your Payment",
+        "## Complete Your Payment\n\nChoose your preferred payment method below.\n\n### International Payment\n\nSecure payment via Wise for global users.",
+        "After payment, email us at [abhishek@dblayer.dev](mailto:abhishek@dblayer.dev) with your registered email to activate access within 12 hours.\n\n### Indian Payment (UPI)\n\nQuick payment via UPI for Indian users.",
+        "`scor32k@ybl`",
+        "scor32k@ybl"
       ]
     }
   },
   {
     "slug": "/help",
-    "title": "Help",
-    "description": "",
-    "content": "## Coming soon...\n",
+    "title": "Help Center",
+    "description": "Find help with dblayer. Access our troubleshooting guides, view billing and pricing information, and contact our support team.",
+    "content": "<div className=\"grid md:grid-cols-3 gap-8 mt-8\">\n  <Card title=\"Billing & Pricing\" href=\"/docs/help/billing\" description=\"Explore our pricing plans and manage your subscription.\" />\n</div>\n",
     "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
+      "cleanContent": "div classname grid md:grid-cols-3 gap-8 mt-8 card title billing pricing href docs help billing description explore our pricing plans and manage your subscription div",
+      "headings": [],
       "keywords": [
-        "Coming soon..."
+        "help",
+        "support",
+        "billing",
+        "troubleshooting",
+        "documentation"
       ]
     }
   },
   {
     "slug": "/help/support",
     "title": "Support",
-    "description": "",
-    "content": "## Coming soon...\n",
+    "description": "Get help with dblayer by filling out our support form or contacting us directly via email for any issues or inquiries.",
+    "content": "# Get Support\n\nIf you need assistance or want to report an issue, you have two options:\n\n1. **Fill out the support form:** For a structured way to report issues, please use our online form.\r\n   [Report an Issue](https://dblayer.dev/report)\n\n2. **Email us directly:** For general inquiries or if you prefer email, you can reach us at:\r\n   [abhishek@dblayer.dev](mailto:abhishek@dblayer.dev?cc=rohandas28@duck.com\\&subject=Hey%20Team%2C%20I%20need%20help!)\n\nWe'll get back to you as soon as possible.\n",
     "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
+      "cleanContent": "get support if you need assistance or want to report an issue you have two options: fill out the support form: for a structured way to report issues please use our online form report an issue email us directly: for general inquiries or if you prefer email you can reach us at: abhishek dblayer dev we ll get back to you as soon as possible",
+      "headings": [],
       "keywords": [
-        "Support",
-        "Coming soon..."
+        "support",
+        "contact",
+        "help",
+        "report issue",
+        "Fill out the support form:",
+        "Email us directly:"
       ]
     }
   },
   {
     "slug": "/help/troubleshoot",
     "title": "Troubleshoot",
-    "description": "",
-    "content": "## Coming soon...\n",
+    "description": "Find solutions to common problems, connection issues, and errors when using dblayer. Learn how to debug your database connections, API endpoints, and applications.",
+    "content": "# Troubleshooting Guide\n\nIf you run into issues while using dblayer, here are some common problems and solutions:\n\n### 1. Database Connection Issues\n\n**Problem:** Cannot connect to PostgreSQL database.\r\n**Possible Causes & Fixes:**\n\n* **Invalid connection string** — Make sure your string follows this format:\r\n  `postgres://username:password@host:port/database`\n\n* **Firewall/Network restrictions** — Ensure your database is publicly accessible or whitelist dblayer’s IP if required.\n\n* **Wrong credentials** — Double-check username, password, host, and database name.\n\n* **SSL required** — Some hosting providers (e.g., Render, Supabase) need `?sslmode=require` in the connection string.\n\n### 2. Endpoint Not Working\n\n**Problem:** Calling an API endpoint returns an error.\r\n**Possible Causes & Fixes:**\n\n* **SQL error** — Check if your SQL query runs correctly in your database client before using it in dblayer.\n\n* **Wrong method** — Ensure you’re calling the endpoint with the correct HTTP method (GET vs POST).\n\n* **Missing parameters** — If your query uses parameters, pass them properly in the request.\n\n* **Unauthorized access** — Confirm if authentication/authorization is enabled for that endpoint.\n\n### 3. Queries Returning No Data\n\n**Problem:** API works, but response is empty.\r\n**Possible Causes & Fixes:**\n\n* **Empty table** — Verify your database actually has data.\n\n* **Filtering issue** — Check if your `WHERE` clause or query parameters are too restrictive.\n\n* **Schema mismatch** — Ensure you’re querying the correct schema (e.g., `public.users` vs `users`).\n\n### 4. App Editor Issues\n\n**Problem:** App is not updating or components aren’t showing data.\r\n**Possible Causes & Fixes:**\n\n* **Query not bound** — Make sure your component is linked to a valid SQL query or API endpoint.\n\n* **Wrong data mapping** — Double-check that your table/label/input points to the correct field in the query response.\n\n* **Unpublished changes** — Remember to click **Publish** after editing.\n\n### 5. Publishing Problems\n\n**Problem:** Endpoint/App not accessible after publishing.\r\n**Possible Causes & Fixes:**\n\n* **Private by default** — Apps are private unless you explicitly set them to public.\n\n* **Wrong URL** — Verify your custom subdomain (e.g., `apple.dblayer.dev`).\n\n* **Propagation delay** — Wait a few seconds and refresh after publishing.\n\n### 6. Performance & Caching\n\n**Problem:** API feels slow.\r\n**Fixes:**\n\n* Enable query caching for frequent queries.\n* Optimize your SQL queries (indexes, limit results).\n* Use pagination for large datasets.\n\n### 7. General Debugging Tips\n\n* Test your SQL queries directly in a PostgreSQL client (psql, Supabase, etc.) before using them in dblayer.\n* Check console/network logs in your browser when testing endpoints.\n* If all else fails, restart your workspace connection from the dashboard.\n\n**Still stuck?** Join our [Discord Community](https://discord.gg/UUEkmUGnyy) for real-time support.\n",
     "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
+      "cleanContent": "troubleshooting guide if you run into issues while using dblayer here are some common problems and solutions: database connection issues problem: cannot connect to postgresql database possible causes fixes: invalid connection string make sure your string follows this format: postgres: username:password host:port database firewall network restrictions ensure your database is publicly accessible or whitelist dblayer s ip if required wrong credentials double-check username password host and database name ssl required some hosting providers e g render supabase need sslmode require in the connection string endpoint not working problem: calling an api endpoint returns an error possible causes fixes: sql error check if your sql query runs correctly in your database client before using it in dblayer wrong method ensure you re calling the endpoint with the correct http method get vs post missing parameters if your query uses parameters pass them properly in the request unauthorized access confirm if authentication authorization is enabled for that endpoint queries returning no data problem: api works but response is empty possible causes fixes: empty table verify your database actually has data filtering issue check if your where clause or query parameters are too restrictive schema mismatch ensure you re querying the correct schema e g public users vs users app editor issues problem: app is not updating or components aren t showing data possible causes fixes: query not bound make sure your component is linked to a valid sql query or api endpoint wrong data mapping double-check that your table label input points to the correct field in the query response unpublished changes remember to click publish after editing publishing problems problem: endpoint app not accessible after publishing possible causes fixes: private by default apps are private unless you explicitly set them to public wrong url verify your custom subdomain e g apple dblayer dev propagation delay wait a few seconds and refresh after publishing performance caching problem: api feels slow fixes: enable query caching for frequent queries optimize your sql queries indexes limit results use pagination for large datasets general debugging tips test your sql queries directly in a postgresql client psql supabase etc before using them in dblayer check console network logs in your browser when testing endpoints if all else fails restart your workspace connection from the dashboard still stuck join our discord community for real-time support",
+      "headings": [],
       "keywords": [
-        "Coming soon..."
+        "troubleshoot",
+        "dblayer issues",
+        "database connection error",
+        "api endpoint not working",
+        "debugging guide",
+        "common errors",
+        "Problem:",
+        "Possible Causes & Fixes:",
+        "Invalid connection string",
+        "Firewall/Network restrictions",
+        "Wrong credentials",
+        "SSL required",
+        "SQL error",
+        "Wrong method",
+        "Missing parameters",
+        "Unauthorized access",
+        "Empty table",
+        "Filtering issue",
+        "Schema mismatch",
+        "Query not bound",
+        "Wrong data mapping",
+        "Unpublished changes",
+        "Publish",
+        "Private by default",
+        "Wrong URL",
+        "Propagation delay",
+        "Fixes:",
+        "Still stuck?",
+        "postgres://username:password@host:port/database",
+        "?sslmode=require",
+        "WHERE",
+        "public.users",
+        "users",
+        "apple.dblayer.dev"
       ]
     }
   }
