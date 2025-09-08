@@ -1,125 +1,5 @@
 [
   {
-    "slug": "/account/account-details",
-    "title": "Account Details",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/account/help",
-    "title": "Help",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/account",
-    "title": "Account",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/account/logs",
-    "title": "Application Logs",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/account/team-management",
-    "title": "Team Management",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/api",
-    "title": "API",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/basic-setup/connection",
-    "title": "Connection",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/basic-setup/endpoint",
-    "title": "Endpoint",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
     "slug": "/basic-setup",
     "title": "Introduction",
     "description": "This guide will walk you through the basics of setting up your first connection, organizing your endpoints in workspaces, and creating your first API.",
@@ -160,107 +40,115 @@
     }
   },
   {
-    "slug": "/basic-setup/workspace",
-    "title": "Workspace",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
     "slug": "/endpoint",
     "title": "Endpoint",
     "description": "",
-    "content": "## Coming soon...\n",
+    "content": "",
     "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
+      "cleanContent": "",
+      "headings": [],
+      "keywords": []
     }
   },
   {
-    "slug": "/endpoint/tabs/documentation",
-    "title": "Documentation",
-    "description": "",
-    "content": "## Coming soon...\n",
+    "slug": "/endpoint/security",
+    "title": "Endpoint Security Config",
+    "description": "Detailed guide for encoding, encryption and hybrid security modes supported. Includes requirements, examples, error mapping and best practices.",
+    "content": "This page explains everything a user needs to know **before** using encoding, encryption or hybrid security modes with the endpoint. It documents the exact behavior implemented, expected inputs and formats, sample commands to generate keys, decryption snippets, limitations and common pitfalls. Read this fully before integrating.\n\n## Supported algorithms\n\n### Encoding algorithms\n\n* `BASE32`\n* `BASE64`\n* `HEX`\n* `ROT13` — simple Caesar-like substitution\n\n### Encryption algorithms\n\n* `AES_256_GCM` — AES-256 in Galois/Counter Mode (GCM). More details:\n\n  * Input: The 32-byte digest. Make sure key size is 23 bytes\n  * Output: the Base64 string.\n* `RSA_2048` and `RSA_4096` — RSA encryption using **OAEP** with **SHA-256** (MGF1 with SHA-256). More details:\n\n  * The public key must be a PEM with block type `\"PUBLIC KEY\"` (PKIX format).\n  * Output: RSA ciphertext (binary) then Base64-encoded (returned string).\n\n### Hybrid behavior\n\n* `HYBRID`\n\n  1. Encrypt the data with AES-256-GCM.\n  2. Encrypt the AES key with RSA to produce the encrypted AES key.\n  3. Return an object with:\n\n     ```json\n     {\r\n       \"data\": \"<AES_encrypted_base64>\",\r\n       \"key\": \"<RSA_encrypted_AES_key_base64>\"\r\n     }\n     ```\n\n***\n\n## Detailed behavior and exact formats\n\n### Encoder outputs\n\n* `BASE32`, `BASE64`, `HEX`: return textual strings representing the encoded bytes of the input.\n* `ROT13`: returns the rot13-transformed string (reversible but not secure).\n\n### AES-256-GCM specifics (exact)\n\n* Key derivation: the SHA-256 digest is taken over the literal bytes string.\n\n### RSA-OAEP (exact)\n\n* Padding: OAEP with SHA-256 (for both OAEP and MGF1).\n\n* Public key format required: PEM with `\"PUBLIC KEY\"` header (PKIX). Example header:\n\n  ```\n  -----BEGIN PUBLIC KEY-----\r\n  ...\r\n  -----END PUBLIC KEY-----\n  ```\n\n* For decryption you need the corresponding private key (PKCS#1 or PKCS#8 PEM is supported by common libraries).\n\n* Maximum plaintext size for RSA-OAEP with SHA-256:\n\n* Practice: RSA is for small payloads (AES keys, tokens). For larger payloads use hybrid encryption.\n\n***\n\n## Generating keys (recommended commands)\n\n### Generate an AES key (random passphrase approach)\n\n* If you want a random passphrase (human-useable):\n\n  ```bash\n  # 32 raw bytes (binary) -> base64 printed\r\n  openssl rand -base64 32\n  ```\n\n### Generate RSA keys (OpenSSL)\n\n```bash\n# RSA-2048\r\nopenssl genpkey -algorithm RSA -out private_2048.pem -pkeyopt rsa_keygen_bits:2048\r\nopenssl rsa -pubout -in private_2048.pem -out public_2048.pem\r\n\r\n# RSA-4096\r\nopenssl genpkey -algorithm RSA -out private_4096.pem -pkeyopt rsa_keygen_bits:4096\r\nopenssl rsa -pubout -in private_4096.pem -out public_4096.pem\n```\n\n* `private_*.pem` → keep this private (used to decrypt RSA-encrypted AES keys).\n* `public_*.pem` → give to clients who will encrypt data or AES keys.\n\n***\n\n## Decryption examples\n\nAssume the backend outputs encoded strings exactly as described (Base64 for encrypted outputs).\n\n* Code Snippets are ~AI Generated\n\n### Python — AES-GCM decrypt\n\n```python\n# Requires: cryptography\r\nimport base64\r\nimport hashlib\r\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\r\n\r\ndef decrypt_aes_gcm(ciphertext_b64: str, user_key_bytes: bytes) -> bytes:\r\n    \"\"\"\r\n    Decrypt AES-GCM ciphertext produced by the backend.\r\n    - ciphertext_b64: Base64 of [nonce(12) | ciphertext | tag(16)]\r\n    - user_key_bytes: the same bytes for encryption\r\n    \"\"\"\r\n    # Derive AES key exactly as backend: SHA-256 over the literal bytes\r\n    aes_key = hashlib.sha256(user_key_bytes).digest()\r\n\r\n    ciphertext = base64.b64decode(ciphertext_b64)\r\n    nonce_size = 12\r\n    nonce = ciphertext[:nonce_size]\r\n    ct_and_tag = ciphertext[nonce_size:]\r\n\r\n    aesgcm = AESGCM(aes_key)\r\n    plaintext = aesgcm.decrypt(nonce, ct_and_tag, None)\r\n    return plaintext\n```\n\n**Usage notes**\n\n* If you used a passphrase `p = \"secret-pass\"`, pass `user_key_bytes = p.encode(\"utf-8\")`.\n\n***\n\n### TypeScript / Node.js — AES-GCM decrypt\n\n```ts\n// Node.js built-in 'crypto'\r\nimport crypto from \"crypto\";\r\n\r\nexport function decryptAESGCMFromBackend(ciphertextB64: string, userKeyString: string): Buffer {\r\n  // Derive AES key: SHA-256 over literal characters (same as backend)\r\n  const aesKey = crypto.createHash(\"sha256\").update(Buffer.from(userKeyString, \"utf8\")).digest();\r\n\r\n  const ciphertext = Buffer.from(ciphertextB64, \"base64\");\r\n  const nonceSize = 12;\r\n  const tagSize = 16;\r\n\r\n  const nonce = ciphertext.slice(0, nonceSize);\r\n  const authTag = ciphertext.slice(ciphertext.length - tagSize);\r\n  const encData = ciphertext.slice(nonceSize, ciphertext.length - tagSize);\r\n\r\n  const decipher = crypto.createDecipheriv(\"aes-256-gcm\", aesKey, nonce);\r\n  decipher.setAuthTag(authTag);\r\n\r\n  const plain1 = decipher.update(encData);\r\n  const plain2 = decipher.final();\r\n  return Buffer.concat([plain1, plain2]);\r\n}\n```\n\n***\n\n### Python — RSA-OAEP decrypt\n\n```python\n# Requires: cryptography\r\nimport base64\r\nfrom cryptography.hazmat.primitives import serialization, hashes\r\nfrom cryptography.hazmat.primitives.asymmetric import padding\r\n\r\ndef rsa_decrypt_oaep(ciphertext_b64: str, private_key_pem: bytes) -> bytes:\r\n    \"\"\"\r\n    - ciphertext_b64: Base64 string from backend (RSA-encrypted AES key)\r\n    - private_key_pem: the PEM content of your RSA private key (bytes)\r\n    \"\"\"\r\n    private_key = serialization.load_pem_private_key(private_key_pem, password=None)\r\n    ciphertext = base64.b64decode(ciphertext_b64)\r\n    plaintext = private_key.decrypt(\r\n        ciphertext,\r\n        padding.OAEP(\r\n           mgf=padding.MGF1(algorithm=hashes.SHA256()),\r\n           algorithm=hashes.SHA256(),\r\n           label=None\r\n        )\r\n    )\r\n    return plaintext  # bytes\n```\n\n***\n\n### Full Hybrid Decrypt example\n\n```python\n# Steps:\r\n# 1. Receive JSON from backend: {\"data\": \"<base64 AES payload>\", \"key\": \"<base64 RSA payload>\"}\r\n# 2. Decrypt 'key' with RSA private key -> returns AES user key bytes (this is the same string that was provided as AES key on backend)\r\n# 3. Use that AES user key bytes with AES-GCM decrypt function above to decrypt 'data'\r\n\r\ndef hybrid_decrypt(hybrid_blob: dict, private_key_pem: bytes) -> bytes:\r\n    rsa_encrypted_aes_key_b64 = hybrid_blob[\"key\"]\r\n    aes_encrypted_data_b64 = hybrid_blob[\"data\"]\r\n\r\n    # 1. RSA decrypt to recover AES user key (bytes)\r\n    aes_user_key_bytes = rsa_decrypt_oaep(rsa_encrypted_aes_key_b64, private_key_pem)\r\n\r\n    # 2. AES decrypt (matching backend's derivation)\r\n    plaintext = decrypt_aes_gcm(aes_encrypted_data_b64, aes_user_key_bytes)\r\n    return plaintext\n```\n\nAfter `hybrid_decrypt`, you will get the original plaintext bytes (which could be JSON). Convert with `json.loads(plaintext.decode(\"utf-8\"))` if it was JSON.\n\n***\n\n## Common errors and troubleshooting\n\n* **`invalid security algo or mode`** — Algorithm or Security Mode is missing or invalid. Provide valid values.\n* **`missing Encription userKey`** — User Key is required for ENCRYPTION or HYBRID.\n* **`invalid hybrid key format: expected AES and RSA keys`** — For HYBRID mode User provided key must contain both parts separated.\n* **RSA public key parse errors** — ensure the public key is PEM PKIX (`-----BEGIN PUBLIC KEY----- ...`) and not an SSH key or other format.\n* **AES decryption failures** — ensure:\n\n  * You derived the AES key exactly the same way (SHA-256 over the **literal bytes** string used at encryption time).\n  * You correctly extract 12-byte nonce and pass `nonce` + `(ciphertext||authTag)` to the GCM decryptor.\n* **Tag verification errors** — indicates either wrong key/nonce/ciphertext tampering.\n* **RSA message too long** — you attempted to encrypt data larger than `max_len`. Use hybrid encrypting or split the data.\n\n***\n\n## Security Best Practices\n\n* **Rotate keys periodically**.\n* **Protect AES keys and RSA private keys** with strict access controls.\n* **Use Hybrid Encryption** for large payloads: AES for bulk encryption and RSA only for the AES key.\n* **Avoid treating encoded data as secure** — Base64/Hex are only for transport/compatibility.\n* **Prefer AES-256-GCM for large data and RSA-OAEP for key exchange**. RSA-4096 is stronger but slower; choose based on security vs performance needs.\n\n***\n\n## Performance notes\n\n* AES-256-GCM is fast, often hardware-accelerated (AES-NI). Good for many concurrent users.\n* RSA operations are computationally heavier — suitable for occasional key exchange, not bulk data encryption.\n* If high throughput is required, prefer:\n\n  * AES for bulk encryption\n  * RSA to encrypt only the AES key\n  * Reuse ciphering primitives carefully.\n\n***\n\n## Some FAQ 🥷\n\n**Q:** Can I decrypt SHA-256 hashes?\r\n**A:** No. SHA-256 is a one-way hash. To verify data you must rehash and compare.\n\n**Q:** What format must RSA public keys be?\r\n**A:** PEM format with header `-----BEGIN PUBLIC KEY-----` (PKIX).\n\n***\n\n## Quick examples (summary)\n\n### Hybrid userKey example:\n\n```\nmy-strong-passphrase<<--HYBRID-->>-----BEGIN PUBLIC KEY-----\r\nMIIBIjANBgkqhkiG9w0BAQ...\r\n-----END PUBLIC KEY-----\n```\n\n### Expected backend hybrid response:\n\n```json\n{\r\n  \"data\": \"Base64_of_[nonce|ciphertext|tag]\",\r\n  \"key\": \"Base64_of_RSA_encrypted_AES_key\"\r\n}\n```\n",
     "_searchMeta": {
-      "cleanContent": "coming soon",
+      "cleanContent": "this page explains everything a user needs to know before using encoding encryption or hybrid security modes with the endpoint it documents the exact behavior implemented expected inputs and formats sample commands to generate keys decryption snippets limitations and common pitfalls read this fully before integrating supported algorithms encoding algorithms base32 base64 hex rot13 simple caesar-like substitution encryption algorithms aes256gcm aes-256 in galois counter mode gcm more details: input: the 32-byte digest make sure key size is 23 bytes output: the base64 string rsa2048 and rsa4096 rsa encryption using oaep with sha-256 mgf1 with sha-256 more details: the public key must be a pem with block type public key pkix format output: rsa ciphertext binary then base64-encoded returned string hybrid behavior hybrid encrypt the data with aes-256-gcm encrypt the aes key with rsa to produce the encrypted aes key return an object with: detailed behavior and exact formats encoder outputs base32 base64 hex: return textual strings representing the encoded bytes of the input rot13: returns the rot13-transformed string reversible but not secure aes-256-gcm specifics exact key derivation: the sha-256 digest is taken over the literal bytes string rsa-oaep exact padding: oaep with sha-256 for both oaep and mgf1 public key format required: pem with public key header pkix example header: for decryption you need the corresponding private key pkcs 1 or pkcs 8 pem is supported by common libraries maximum plaintext size for rsa-oaep with sha-256: practice: rsa is for small payloads aes keys tokens for larger payloads use hybrid encryption generating keys recommended commands generate an aes key random passphrase approach if you want a random passphrase human-useable : generate rsa keys openssl private_ pem keep this private used to decrypt rsa-encrypted aes keys public_ pem give to clients who will encrypt data or aes keys decryption examples assume the backend outputs encoded strings exactly as described base64 for encrypted outputs code snippets are ai generated python aes-gcm decrypt usage notes if you used a passphrase p secret-pass pass userkeybytes p encode utf-8 typescript node js aes-gcm decrypt python rsa-oaep decrypt full hybrid decrypt example after hybrid_decrypt you will get the original plaintext bytes which could be json convert with json loads plaintext decode utf-8 if it was json common errors and troubleshooting invalid security algo or mode algorithm or security mode is missing or invalid provide valid values missing encription userkey user key is required for encryption or hybrid invalid hybrid key format: expected aes and rsa keys for hybrid mode user provided key must contain both parts separated rsa public key parse errors ensure the public key is pem pkix -----begin public key----- and not an ssh key or other format aes decryption failures ensure: you derived the aes key exactly the same way sha-256 over the literal bytes string used at encryption time you correctly extract 12-byte nonce and pass nonce ciphertextauthtag to the gcm decryptor tag verification errors indicates either wrong key nonce ciphertext tampering rsa message too long you attempted to encrypt data larger than max_len use hybrid encrypting or split the data security best practices rotate keys periodically protect aes keys and rsa private keys with strict access controls use hybrid encryption for large payloads: aes for bulk encryption and rsa only for the aes key avoid treating encoded data as secure base64 hex are only for transport compatibility prefer aes-256-gcm for large data and rsa-oaep for key exchange rsa-4096 is stronger but slower choose based on security vs performance needs performance notes aes-256-gcm is fast often hardware-accelerated aes-ni good for many concurrent users rsa operations are computationally heavier suitable for occasional key exchange not bulk data encryption if high throughput is required prefer: aes for bulk encryption rsa to encrypt only the aes key reuse ciphering primitives carefully some faq q: can i decrypt sha-256 hashes a: no sha-256 is a one-way hash to verify data you must rehash and compare q: what format must rsa public keys be a: pem format with header -----begin public key----- pkix quick examples summary hybrid userkey example: expected backend hybrid response:",
       "headings": [
-        "Coming soon..."
+        "Supported algorithms",
+        "Detailed behavior and exact formats",
+        "Generating keys (recommended commands)",
+        "Decryption examples",
+        "Common errors and troubleshooting",
+        "Security Best Practices",
+        "Performance notes",
+        "Some FAQ 🥷",
+        "Quick examples (summary)"
       ],
       "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/endpoint/tabs",
-    "title": "Tabs",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/endpoint/tabs/link",
-    "title": "Link",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/endpoint/tabs/recipe",
-    "title": "Recipe",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
-      ]
-    }
-  },
-  {
-    "slug": "/endpoint/tabs/usage",
-    "title": "Usage",
-    "description": "",
-    "content": "## Coming soon...\n",
-    "_searchMeta": {
-      "cleanContent": "coming soon",
-      "headings": [
-        "Coming soon..."
-      ],
-      "keywords": [
-        "Coming soon..."
+        "security",
+        "Supported algorithms",
+        "Detailed behavior and exact formats",
+        "Generating keys (recommended commands)",
+        "Decryption examples",
+        "Common errors and troubleshooting",
+        "Security Best Practices",
+        "Performance notes",
+        "Some FAQ 🥷",
+        "Quick examples (summary)",
+        "before",
+        "OAEP",
+        "SHA-256",
+        "Usage notes",
+        "### TypeScript / Node.js — AES-GCM decrypt\n\n```ts\n// Node.js built-in 'crypto'\r\nimport crypto from \"crypto\";\r\n\r\nexport function decryptAESGCMFromBackend(ciphertextB64: string, userKeyString: string): Buffer {\r\n  // Derive AES key: SHA-256 over literal characters (same as backend)\r\n  const aesKey = crypto.createHash(\"sha256\").update(Buffer.from(userKeyString, \"utf8\")).digest();\r\n\r\n  const ciphertext = Buffer.from(ciphertextB64, \"base64\");\r\n  const nonceSize = 12;\r\n  const tagSize = 16;\r\n\r\n  const nonce = ciphertext.slice(0, nonceSize);\r\n  const authTag = ciphertext.slice(ciphertext.length - tagSize);\r\n  const encData = ciphertext.slice(nonceSize, ciphertext.length - tagSize);\r\n\r\n  const decipher = crypto.createDecipheriv(\"aes-256-gcm\", aesKey, nonce);\r\n  decipher.setAuthTag(authTag);\r\n\r\n  const plain1 = decipher.update(encData);\r\n  const plain2 = decipher.final();\r\n  return Buffer.concat([plain1, plain2]);\r\n}\n```",
+        "### Full Hybrid Decrypt example\n\n```python\n# Steps:\r\n# 1. Receive JSON from backend: {\"data\": \"<base64 AES payload>\", \"key\": \"<base64 RSA payload>\"}\r\n# 2. Decrypt 'key' with RSA private key -> returns AES user key bytes (this is the same string that was provided as AES key on backend)\r\n# 3. Use that AES user key bytes with AES-GCM decrypt function above to decrypt 'data'\r\n\r\ndef hybrid_decrypt(hybrid_blob: dict, private_key_pem: bytes) -> bytes:\r\n    rsa_encrypted_aes_key_b64 = hybrid_blob[\"key\"]\r\n    aes_encrypted_data_b64 = hybrid_blob[\"data\"]\r\n\r\n    # 1. RSA decrypt to recover AES user key (bytes)\r\n    aes_user_key_bytes = rsa_decrypt_oaep(rsa_encrypted_aes_key_b64, private_key_pem)\r\n\r\n    # 2. AES decrypt (matching backend's derivation)\r\n    plaintext = decrypt_aes_gcm(aes_encrypted_data_b64, aes_user_key_bytes)\r\n    return plaintext\n```\n\nAfter `hybrid_decrypt`, you will get the original plaintext bytes (which could be JSON). Convert with `json.loads(plaintext.decode(\"utf-8\"))` if it was JSON.",
+        "`invalid security algo or mode`",
+        "`missing Encription userKey`",
+        "`invalid hybrid key format: expected AES and RSA keys`",
+        "RSA public key parse errors",
+        "AES decryption failures",
+        "literal bytes",
+        "Tag verification errors",
+        "RSA message too long",
+        "Rotate keys periodically",
+        "Protect AES keys and RSA private keys",
+        "Use Hybrid Encryption",
+        "Avoid treating encoded data as secure",
+        "Prefer AES-256-GCM for large data and RSA-OAEP for key exchange",
+        "## Some FAQ 🥷",
+        "Can I decrypt SHA-256 hashes?",
+        "No. SHA-256 is a one-way hash. To verify data you must rehash and compare.",
+        "What format must RSA public keys be?",
+        "PEM format with header `-----BEGIN PUBLIC KEY-----` (PKIX).",
+        "BASE32",
+        "BASE64",
+        "HEX",
+        "ROT13",
+        "AES_256_GCM",
+        "RSA_2048",
+        "RSA_4096",
+        "\"PUBLIC KEY\"",
+        "HYBRID",
+        "json\n     {\r\n       \"data\": \"<AES_encrypted_base64>\",\r\n       \"key\": \"<RSA_encrypted_AES_key_base64>\"\r\n     }",
+        "***\n\n## Detailed behavior and exact formats\n\n### Encoder outputs\n\n*",
+        ",",
+        ": return textual strings representing the encoded bytes of the input.\n*",
+        ": returns the rot13-transformed string (reversible but not secure).\n\n### AES-256-GCM specifics (exact)\n\n* Key derivation: the SHA-256 digest is taken over the literal bytes string.\n\n### RSA-OAEP (exact)\n\n* Padding: OAEP with SHA-256 (for both OAEP and MGF1).\n\n* Public key format required: PEM with",
+        "header (PKIX). Example header:",
+        "-----BEGIN PUBLIC KEY-----\r\n  ...\r\n  -----END PUBLIC KEY-----",
+        "* For decryption you need the corresponding private key (PKCS#1 or PKCS#8 PEM is supported by common libraries).\n\n* Maximum plaintext size for RSA-OAEP with SHA-256:\n\n* Practice: RSA is for small payloads (AES keys, tokens). For larger payloads use hybrid encryption.\n\n***\n\n## Generating keys (recommended commands)\n\n### Generate an AES key (random passphrase approach)\n\n* If you want a random passphrase (human-useable):",
+        "bash\n  # 32 raw bytes (binary) -> base64 printed\r\n  openssl rand -base64 32",
+        "### Generate RSA keys (OpenSSL)",
+        "bash\n# RSA-2048\r\nopenssl genpkey -algorithm RSA -out private_2048.pem -pkeyopt rsa_keygen_bits:2048\r\nopenssl rsa -pubout -in private_2048.pem -out public_2048.pem\r\n\r\n# RSA-4096\r\nopenssl genpkey -algorithm RSA -out private_4096.pem -pkeyopt rsa_keygen_bits:4096\r\nopenssl rsa -pubout -in private_4096.pem -out public_4096.pem",
+        "*",
+        "→ keep this private (used to decrypt RSA-encrypted AES keys).\n*",
+        "→ give to clients who will encrypt data or AES keys.\n\n***\n\n## Decryption examples\n\nAssume the backend outputs encoded strings exactly as described (Base64 for encrypted outputs).\n\n* Code Snippets are ~AI Generated\n\n### Python — AES-GCM decrypt",
+        "python\n# Requires: cryptography\r\nimport base64\r\nimport hashlib\r\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\r\n\r\ndef decrypt_aes_gcm(ciphertext_b64: str, user_key_bytes: bytes) -> bytes:\r\n    \"\"\"\r\n    Decrypt AES-GCM ciphertext produced by the backend.\r\n    - ciphertext_b64: Base64 of [nonce(12) | ciphertext | tag(16)]\r\n    - user_key_bytes: the same bytes for encryption\r\n    \"\"\"\r\n    # Derive AES key exactly as backend: SHA-256 over the literal bytes\r\n    aes_key = hashlib.sha256(user_key_bytes).digest()\r\n\r\n    ciphertext = base64.b64decode(ciphertext_b64)\r\n    nonce_size = 12\r\n    nonce = ciphertext[:nonce_size]\r\n    ct_and_tag = ciphertext[nonce_size:]\r\n\r\n    aesgcm = AESGCM(aes_key)\r\n    plaintext = aesgcm.decrypt(nonce, ct_and_tag, None)\r\n    return plaintext",
+        "**Usage notes**\n\n* If you used a passphrase",
+        ", pass",
+        ".\n\n***\n\n### TypeScript / Node.js — AES-GCM decrypt",
+        "ts\n// Node.js built-in 'crypto'\r\nimport crypto from \"crypto\";\r\n\r\nexport function decryptAESGCMFromBackend(ciphertextB64: string, userKeyString: string): Buffer {\r\n  // Derive AES key: SHA-256 over literal characters (same as backend)\r\n  const aesKey = crypto.createHash(\"sha256\").update(Buffer.from(userKeyString, \"utf8\")).digest();\r\n\r\n  const ciphertext = Buffer.from(ciphertextB64, \"base64\");\r\n  const nonceSize = 12;\r\n  const tagSize = 16;\r\n\r\n  const nonce = ciphertext.slice(0, nonceSize);\r\n  const authTag = ciphertext.slice(ciphertext.length - tagSize);\r\n  const encData = ciphertext.slice(nonceSize, ciphertext.length - tagSize);\r\n\r\n  const decipher = crypto.createDecipheriv(\"aes-256-gcm\", aesKey, nonce);\r\n  decipher.setAuthTag(authTag);\r\n\r\n  const plain1 = decipher.update(encData);\r\n  const plain2 = decipher.final();\r\n  return Buffer.concat([plain1, plain2]);\r\n}",
+        "***\n\n### Python — RSA-OAEP decrypt",
+        "python\n# Requires: cryptography\r\nimport base64\r\nfrom cryptography.hazmat.primitives import serialization, hashes\r\nfrom cryptography.hazmat.primitives.asymmetric import padding\r\n\r\ndef rsa_decrypt_oaep(ciphertext_b64: str, private_key_pem: bytes) -> bytes:\r\n    \"\"\"\r\n    - ciphertext_b64: Base64 string from backend (RSA-encrypted AES key)\r\n    - private_key_pem: the PEM content of your RSA private key (bytes)\r\n    \"\"\"\r\n    private_key = serialization.load_pem_private_key(private_key_pem, password=None)\r\n    ciphertext = base64.b64decode(ciphertext_b64)\r\n    plaintext = private_key.decrypt(\r\n        ciphertext,\r\n        padding.OAEP(\r\n           mgf=padding.MGF1(algorithm=hashes.SHA256()),\r\n           algorithm=hashes.SHA256(),\r\n           label=None\r\n        )\r\n    )\r\n    return plaintext  # bytes",
+        "***\n\n### Full Hybrid Decrypt example",
+        "python\n# Steps:\r\n# 1. Receive JSON from backend: {\"data\": \"<base64 AES payload>\", \"key\": \"<base64 RSA payload>\"}\r\n# 2. Decrypt 'key' with RSA private key -> returns AES user key bytes (this is the same string that was provided as AES key on backend)\r\n# 3. Use that AES user key bytes with AES-GCM decrypt function above to decrypt 'data'\r\n\r\ndef hybrid_decrypt(hybrid_blob: dict, private_key_pem: bytes) -> bytes:\r\n    rsa_encrypted_aes_key_b64 = hybrid_blob[\"key\"]\r\n    aes_encrypted_data_b64 = hybrid_blob[\"data\"]\r\n\r\n    # 1. RSA decrypt to recover AES user key (bytes)\r\n    aes_user_key_bytes = rsa_decrypt_oaep(rsa_encrypted_aes_key_b64, private_key_pem)\r\n\r\n    # 2. AES decrypt (matching backend's derivation)\r\n    plaintext = decrypt_aes_gcm(aes_encrypted_data_b64, aes_user_key_bytes)\r\n    return plaintext",
+        "After",
+        ", you will get the original plaintext bytes (which could be JSON). Convert with",
+        "if it was JSON.\n\n***\n\n## Common errors and troubleshooting\n\n* **",
+        "** — Algorithm or Security Mode is missing or invalid. Provide valid values.\n* **",
+        "** — User Key is required for ENCRYPTION or HYBRID.\n* **",
+        "** — For HYBRID mode User provided key must contain both parts separated.\n* **RSA public key parse errors** — ensure the public key is PEM PKIX (",
+        ") and not an SSH key or other format.\n* **AES decryption failures** — ensure:\n\n  * You derived the AES key exactly the same way (SHA-256 over the **literal bytes** string used at encryption time).\n  * You correctly extract 12-byte nonce and pass",
+        "+",
+        "to the GCM decryptor.\n* **Tag verification errors** — indicates either wrong key/nonce/ciphertext tampering.\n* **RSA message too long** — you attempted to encrypt data larger than",
+        ". Use hybrid encrypting or split the data.\n\n***\n\n## Security Best Practices\n\n* **Rotate keys periodically**.\n* **Protect AES keys and RSA private keys** with strict access controls.\n* **Use Hybrid Encryption** for large payloads: AES for bulk encryption and RSA only for the AES key.\n* **Avoid treating encoded data as secure** — Base64/Hex are only for transport/compatibility.\n* **Prefer AES-256-GCM for large data and RSA-OAEP for key exchange**. RSA-4096 is stronger but slower; choose based on security vs performance needs.\n\n***\n\n## Performance notes\n\n* AES-256-GCM is fast, often hardware-accelerated (AES-NI). Good for many concurrent users.\n* RSA operations are computationally heavier — suitable for occasional key exchange, not bulk data encryption.\n* If high throughput is required, prefer:\n\n  * AES for bulk encryption\n  * RSA to encrypt only the AES key\n  * Reuse ciphering primitives carefully.\n\n***\n\n## Some FAQ 🥷\n\n**Q:** Can I decrypt SHA-256 hashes?\r\n**A:** No. SHA-256 is a one-way hash. To verify data you must rehash and compare.\n\n**Q:** What format must RSA public keys be?\r\n**A:** PEM format with header",
+        "(PKIX).\n\n***\n\n## Quick examples (summary)\n\n### Hybrid userKey example:",
+        "my-strong-passphrase<<--HYBRID-->>-----BEGIN PUBLIC KEY-----\r\nMIIBIjANBgkqhkiG9w0BAQ...\r\n-----END PUBLIC KEY-----",
+        "### Expected backend hybrid response:",
+        "json\n{\r\n  \"data\": \"Base64_of_[nonce|ciphertext|tag]\",\r\n  \"key\": \"Base64_of_RSA_encrypted_AES_key\"\r\n}"
       ]
     }
   },
